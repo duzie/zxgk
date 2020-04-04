@@ -9,4 +9,3 @@ git pull
 ps -aux | grep $jarfile | awk '{print $2}' | xargs kill -9
 
 nohup java -jar $jarfile > log &
-
