@@ -47,8 +47,7 @@ public class Publiccreditchinagovcn {
         List<Zxgk> list = new ArrayList<>();
         for (ResponseData responseDatum : responseData) {
             Zxgk zxgk = new Zxgk();
-            zxgk.setName("张");
-//            zxgk.setName("张"+responseDatum.getXm());
+            zxgk.setName(responseDatum.getXm());
             zxgk.setIdnumber(responseDatum.getTmzjhm());
             list.add(zxgk);
         }

@@ -2,7 +2,7 @@ spring:
   application:
     name: zxgk
   datasource:
-    url: jdbc:mysql://localhost:3306/zxgk?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/fa?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 23456789
 logging:
