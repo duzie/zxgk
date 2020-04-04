@@ -15,9 +15,9 @@ public class IndexController {
 
     @GetMapping
     public String index() {
-        Zxgk one = zxgkService.lambdaQuery().orderByDesc(Zxgk::getId).one();
+        Zxgk one = zxgkService.lambdaQuery().orderByDesc(Zxgk::getId).last("limit 1").one();
         String s = "已收录数：" + zxgkService.count();
-        s += "<br>最后收录时间" + DateFormatUtils.format(one.getCreateDate(), "yyyy-MM-dd HH:mm");
+        s += "<br>最后收录时间：" + DateFormatUtils.format(one.getCreateDate(), "yyyy-MM-dd HH:mm");
         return s;
     }
 }
