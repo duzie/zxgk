@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: zxgk
+  datasource:
+    url: jdbc:mysql://localhost:3306/zxgk?serverTimezone=Asia/Shanghai
+    username: root
+    password: 23456789
+logging:
+  level.com.f.zxgk: debug
