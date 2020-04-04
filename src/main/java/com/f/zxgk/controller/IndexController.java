@@ -13,6 +13,6 @@ public class IndexController {
 
     @GetMapping
     public String index() {
-        return "已收录数：" + zxgkService.count();
+        return ".已收录数：" + zxgkService.count();
     }
 }
