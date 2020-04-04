@@ -11,7 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.fluent.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
  * https://www.creditchina.gov.cn/gerenxinyong/personsearch/index.html?tablename=credit_zgf_zrr_sxbzxr&gsName=%E5%A4%B1%E4%BF%A1%E8%A2%AB%E6%89%A7%E8%A1%8C%E4%BA%BA%E5%90%8D%E5%8D%95%E6%9F%A5%E8%AF%A2
  */
 @Slf4j
-@Service
+@RestController("site/Publiccreditchinagovcn")
 public class Publiccreditchinagovcn {
 
     @Autowired
@@ -30,6 +31,7 @@ public class Publiccreditchinagovcn {
     @Autowired
     private ObjectMapper om;
 
+    @GetMapping
     @Scheduled(cron = "0 0 */5 * * ?")
     public void read() throws IOException {
         String url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_zgf_zrr_sxbzxr_jb&scenes=defaultscenario";
