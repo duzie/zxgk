@@ -12,6 +12,7 @@ import org.apache.hc.client5.http.fluent.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -22,7 +23,8 @@ import java.util.List;
  * https://www.creditchina.gov.cn/gerenxinyong/personsearch/index.html?tablename=credit_zgf_zrr_sxbzxr&gsName=%E5%A4%B1%E4%BF%A1%E8%A2%AB%E6%89%A7%E8%A1%8C%E4%BA%BA%E5%90%8D%E5%8D%95%E6%9F%A5%E8%AF%A2
  */
 @Slf4j
-@RestController("site/Publiccreditchinagovcn")
+@RestController
+@RequestMapping("site/Publiccreditchinagovcn")
 public class Publiccreditchinagovcn {
 
     @Autowired
