@@ -1,0 +1,11 @@
+#!/bin/sh
+
+git pull
+
+./mvnw package -Dmaven.test.skip=true
+
+jarfile=target/f-zxgk-0.0.1-SNAPSHOT.jar
+
+ps -aux | grep $jarfile | awk '{print $2}' | xargs kill -9
+
+nohup java -jar $jarfile > log &
