@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @TableName("zxgk")
 public class Zxgk {
@@ -14,4 +16,7 @@ public class Zxgk {
     private String name;
 
     private String idnumber;
+
+    private Date createDate;
+
 }
