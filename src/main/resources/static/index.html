@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>黑名单查询</title>
+    <link rel="stylesheet" href="http://www.getuikit.net/docs/css/uikit.docs.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="uk-overflow-container" style="margin: 10px;">
+        <fieldset>
+            <legend>录入</legend>
+            <div class="uk-form-row">
+                <input type="text" id="name" placeholder="姓名">
+                <input type="text" id="idNumber" placeholder="号码">
+            </div>
+            <div class="uk-form-row">
+                <button class="uk-button" type="button" id="search">查询</button>
+            </div>
+        </fieldset>
+
+    <table class="uk-table "  >
+        <tbody>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+<script>
+     $(function(){
+         $('#search').click(function(){
+             $.post({
+                 url:'search',
+                 data:{name:$('#name').val(),idNumber:$('#idNumber').val()},
+                 success:function(data){
+                     var html;
+                     for (i in data) {
+                         d = data[i];
+                       html +=  " <tr>\n" +
+                         "            <td>"+ d.name +"</td>\n" +
+                         "            <td>"+ d.idnumber +"</td>\n" +
+                         "            <td>"+ d.remark +"</td>\n" +
+                         "        </tr>";
+                     }
+                     $('tbody').html(html);
+                }
+             });
+         });
+     });
+</script>
+</html>
