@@ -36,7 +36,31 @@ public class Publiccreditchinagovcn {
     @GetMapping
     @Scheduled(cron = "0 0 */5 * * ?")
     public void read() throws IOException {
+        //
         String url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_zgf_zrr_sxbzxr_jb&scenes=defaultscenario";
+        read(url, "失信被执行人");
+        //
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_fgw_zrr_ffjz_jb&scenes=defaultscenario";
+        read(url, "涉金融领域非法集资名单");
+        //
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_fgw_zrr_qtyzwf_jb&scenes=defaultscenario";
+        read(url, "涉金融领域其他严重违法名单");
+        //
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?scenes=defaultscenario&tableName=credit_hmd_zrr_xzhc_jb&searchState=2&page=1&pageSize=10000";
+        read(url, "限制乘坐火车名单公示");
+        //
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?scenes=defaultscenario&tableName=credit_hmd_zrr_xzfj_jb&searchState=2&page=1&pageSize=10000";
+        read(url, "限制乘坐民用航空器名单");
+        //
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_wjw_zrr_ynhmd_jb&scenes=defaultscenario";
+        read(url, "严重危害正常医疗秩序黑名单查询");
+
+        url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=20&tableName=credit_jtysb_zrr_yzwfcxczyx_jb&scenes=scenario1";
+        read(url, "严重违法超限超载运输失信当事人");
+        zxgkService.deleteRe();
+    }
+
+    public void read(String url, String remark) throws IOException {
         String s = Request.get(url)
                 .addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.34 Safari/537.36")
                 .execute(Http.NO_TRUESTED_CLIENT).returnContent().asString();
@@ -49,10 +73,11 @@ public class Publiccreditchinagovcn {
             Zxgk zxgk = new Zxgk();
             zxgk.setName(responseDatum.getXm());
             zxgk.setIdnumber(responseDatum.getTmzjhm());
+            zxgk.setRemark(remark);
+            zxgk.setClazz(this.getClass().getName());
             list.add(zxgk);
         }
         zxgkService.saveBatch(list);
-        zxgkService.deleteRe();
     }
 
 }

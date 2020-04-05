@@ -19,4 +19,8 @@ public class Zxgk {
 
     private Date createDate;
 
+    private String remark;
+
+    private String clazz;
+
 }
