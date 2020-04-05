@@ -14,7 +14,7 @@ class PubliccreditchinagovcnTest {
 
     @Test
     void read() throws IOException {
-       String  url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_fgw_zrr_ffjz_jb&scenes=defaultscenario";
-        publiccreditchinagovcn.read(url);
+        String url = "https://public.creditchina.gov.cn/private-api/catalogSearchPerson?searchState=2&page=1&pageSize=10000&tableName=credit_fgw_zrr_ffjz_jb&scenes=defaultscenario";
+        publiccreditchinagovcn.read(url,"test");
     }
 }
