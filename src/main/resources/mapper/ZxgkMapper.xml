@@ -4,6 +4,6 @@
 <mapper namespace="com.f.zxgk.mapper.ZxgkMapper">
 
     <delete id="deleteRe">
-        delete from zxgk where id not in (select * from (select max(id) from zxgk z group by z.name, z.idnumber) t)
+        delete zxgk where id not in (select min(id) from zxgk group by name,idnumber having count(1) > 1)
     </delete>
 </mapper>
