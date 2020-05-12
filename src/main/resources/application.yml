@@ -6,6 +6,6 @@ spring:
     username: root
     password: 23456789
 logging:
-  level.com.f.zxgk: debug
+  level.com.f.zxgk: info
 server:
   port: 9001
